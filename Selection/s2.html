@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>repl.it</title>
+    <link href="style.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+    <div id="magic">
+      <img src="https://appinventor.mit.edu/explore/sites/all/files/ai2tutorials/magic8ball/magic8ball.jpg" height=100% width=100%>
+      <div id="ans"></div>
+    </div>
+    <script>
+      prompt("Enter question for the magic 8 ball")
+      var randomNumber=Math.floor(Math.random()*8)%8; //random number
+      var possibleAnswer=["My sources say yes","As I see it, yes","Ask again later","Better not tell you now","It is certain","Don't count on it","Cannot predict now","Concentrate and ask again"]; //possible answers
+      change();
+
+      function change() {
+        document.getElementById("ans").innerHTML=possibleAnswer   [randomNumber]; //accessing the index at the generated random number (quick way to do it without a bunch of statements)
+        return;
+      }
+    </script>
+  </body>
+</html>
