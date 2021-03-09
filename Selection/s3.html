@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>repl.it</title>
+    <link href="style.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+    <script>
+              let zodiacMonth=prompt("Enter month of birth (in letters)"),day=prompt("Enter day of birth (as an integer)"); //taking in input
+        zodiacMonth=zodiacMonth.toLowerCase(); //converting to lowercase to make it easier to work with
+        var months={ //dictionary of the months mapped to its integer value (first month is 0, second is 1, etc.)
+          "january": 0,
+          "febuary": 1,
+          "march": 2,
+          "april": 3,
+          "may": 4,
+          "june":5,
+          "july":6,
+          "august":7,
+          "september":8,
+          "october":9,
+          "november":10,
+          "december":11
+        };
+        let month=months[zodiacMonth]+1,answer; //increment month by 1 because I made the if statements 1 indexed by accident
+        if (month==1&&day>=20||month==2&&day<19) {
+          answer="Aquarius"; //using a variable instead of document.write() at every if statement cleans up the code
+        }
+        else if (month==2&&day>=20||month==3&&day<21) {
+          answer="Pisces";
+        }
+        else if (month==3&&day>=21||month==4&&day<20) {
+          answer="Aries";
+        }
+        else if (month==4&&day>=20||month==5&&day<21) {
+          answer="Taurus";
+        }
+        else if (month==5&&day>=21||month==6&&day<21) {
+          answer="Gemini";
+        }
+        else if (month==6&&day>=21||month==7&&day<23) {
+          answer="Cancer";
+        }
+        else if (month==7&&day>=23||month==8&&day<23) {
+          answer="Leo";
+        }
+        else if (month==8&&day>=23||month==9&&day<23) {
+          answer="Virgo";
+        }
+        else if (month==9&&day>=23||month==10&&day<23) {
+          answer="Libra";
+        }
+        else if (month==10&&day>=23||month==11&&day<=22) {
+          answer="Scorpio";
+        }
+        else if (month==11&&day>=23||month==12&&day<22) {
+          answer="Sagittarius";
+        }
+        else if (month==12&&day>=22||month==1&&day<20) {
+          answer="Capricorn";
+        }
+        else {
+          answer="ERROR";
+        }
+        if (answer=="ERROR") {
+          alert("Invalid value entered, please try again.")
+        }
+        else document.write("Your zodiac sign is "+answer);
+    </script>
+  </body>
+</html>
