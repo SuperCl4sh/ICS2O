@@ -8,7 +8,8 @@
   </head>
   <body>
     <script>
-              let zodiacMonth=prompt("Enter month of birth (in letters)"),day=prompt("Enter day of birth (as an integer)"); //taking in input
+        //Sign dates are based on: https://en.wikipedia.org/wiki/Zodiac
+        let zodiacMonth=prompt("Enter month of birth (in letters)"),day=prompt("Enter day of birth (as an integer)"); //taking in input
         zodiacMonth=zodiacMonth.toLowerCase(); //converting to lowercase to make it easier to work with
         var months={ //dictionary of the months mapped to its integer value (first month is 0, second is 1, etc.)
           "january": 0,
@@ -24,42 +25,56 @@
           "november":10,
           "december":11
         };
-        let month=months[zodiacMonth]+1,answer; //increment month by 1 because I made the if statements 1 indexed by accident
+        let imgAr=["https://www.thesun.co.uk/wp-content/uploads/2019/09/NINTCHDBPICT000596530379.jpg","https://media.istockphoto.com/vectors/zodiac-sign-pisces-vector-id539016914","https://image.shutterstock.com/image-vector/hand-drawn-aries-zodiac-illustration-260nw-1615207963.jpg","https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/taurus-zodiac-sign-abstract-night-sky-background-royalty-free-image-1587395874.jpg","https://cdn.images.express.co.uk/img/dynamic/130/590x/secondary/Gemini-Represent-curiosity-and-kindness-and-born-between-May-21-and-June-21-2435440.jpg?r=1588789426680","https://media.allure.com/photos/5eeb98fbe7561c00086396f5/master/w_3500,h_2000,c_limit/HOROSCOPE.jpg","https://images-na.ssl-images-amazon.com/images/I/61CrsvpwTXL.jpg","https://i.pinimg.com/originals/23/a9/b8/23a9b8d51f2b70c03babac486fde5ed4.png","https://www.ziprecruiter.com/blog/wp-content/uploads/2017/08/libra-1.png","https://blog.prepscholar.com/hs-fs/hubfs/zodiac-sign-4374412_1920.jpg?width=459&name=zodiac-sign-4374412_1920.jpg","https://cdn.shopify.com/s/files/1/1325/0879/articles/headers-zodiac-sign-astrology-personality-positives-negatives-cheat-sheet-sagittarius_1024x1024.png?v=1517414803","https://i.pinimg.com/originals/0b/01/b3/0b01b3e8de8acdfab32ac6b269c26086.jpg"];
+        console.log(imgAr.length);
+        let month=months[zodiacMonth]+1,answer,imgInd; //increment month by 1 because I made the if statements 1 indexed by accident
         if (month==1&&day>=20||month==2&&day<19) {
           answer="Aquarius"; //using a variable instead of document.write() at every if statement cleans up the code
+          imgInd=0;
         }
         else if (month==2&&day>=20||month==3&&day<21) {
           answer="Pisces";
+          imgInd=1;
         }
         else if (month==3&&day>=21||month==4&&day<20) {
           answer="Aries";
+          imgInd=2;
         }
         else if (month==4&&day>=20||month==5&&day<21) {
           answer="Taurus";
+          imgInd=3;
         }
         else if (month==5&&day>=21||month==6&&day<21) {
           answer="Gemini";
+          imgInd=4;
         }
         else if (month==6&&day>=21||month==7&&day<23) {
           answer="Cancer";
+          imgInd=5;
         }
         else if (month==7&&day>=23||month==8&&day<23) {
           answer="Leo";
+          imgInd=6;
         }
         else if (month==8&&day>=23||month==9&&day<23) {
           answer="Virgo";
+          imgInd=7;
         }
         else if (month==9&&day>=23||month==10&&day<23) {
           answer="Libra";
+          imgInd=8;
         }
         else if (month==10&&day>=23||month==11&&day<=22) {
           answer="Scorpio";
+          imgInd=9;
         }
         else if (month==11&&day>=23||month==12&&day<22) {
           answer="Sagittarius";
+          imgInd=10;
         }
         else if (month==12&&day>=22||month==1&&day<20) {
           answer="Capricorn";
+          imgInd=11;
         }
         else {
           answer="ERROR";
@@ -67,7 +82,13 @@
         if (answer=="ERROR") {
           alert("Invalid value entered, please try again.")
         }
-        else document.write("Your zodiac sign is "+answer);
+        else {
+          document.write("Your zodiac sign is "+answer);
+          let finalInd=imgAr[imgInd];
+          document.write("<br><br><br><br><img src="+finalInd+">");
+
+
+        }
     </script>
   </body>
 </html>
