@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>repl.it</title>
+    <link href="style.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+    <script>
+              //optimal strategy: binary search
+        let ans=Math.floor(Math.random()*9)+1,iteration=0,guess,points=[100,50,25,12],total=0,extraGuess=0; //initializing variables
+        do { //do while used to ensure that the loop is run through at least 1
+          ans=Math.floor(Math.random()*9)+1; //generating random number (different each iteration)
+          for (var i=0,remGuess=2+extraGuess;i<3+extraGuess;i++,remGuess--) {
+              guess=prompt("Enter a number");
+            if (guess==ans) {
+              alert("Congratulations, you guessed correctly.");
+              break;
+            }
+            else {
+              if (guess>ans) { //guess is bigger
+                alert("Too high, you have "+String(remGuess)+" guesses remaining");
+              }
+              else { //guess is smaller
+                alert("Too low, you have "+String(remGuess)+" guesses remaining");
+
+              }
+            }
+          }
+          if (extraGuess) extraGuess=0;
+          if (guess==ans) {
+            total+=points[i];
+          }
+          alert("You currently have "+String(total)+" points.");
+          let Shop=prompt("Enter 1 if you would like to enter shop and 0 if you do not.");
+          if (Shop==1) { //entering shop
+            let choice=prompt("Enter which item you would like to buy: 1 is an extra guess (200 points)");
+            if (choice==1) { //used to ensure that invalid inputs don't go through (for example if other numbers >1)
+              if (total<200) {
+                alert("You do not have enough points!");
+              }
+              else {
+                total-=200;
+                alert("You purchased an extra guess. You now have " + String(total)+" points remaining.");
+                ++extraGuess; //extra guess purchase
+              }
+            }
+          }
+          iteration=prompt("Enter 1 if you would like to continue and 0 if you would like to quit.");
+        } while (parseInt(iteration)!=0);
+        alert("You finished with "+String(total)+" remaining points.");
+    </script>
+  </body>
+</html>
