@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>repl.it</title>
+    <link href="style.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+    <script>
+          let year=prompt("Enter a year to be tested");
+      while (year!=parseInt(year)) {
+      year=prompt("Invalid. Please try again")
+      }
+      let ans;
+      if (year%4==0&&year%100!=0||year%400==0) {
+      ans=" is a leap year";
+      }
+      else ans=" is not a leap year";
+      document.write(year+ans);
+    </script>
+  </body>
+</html>
