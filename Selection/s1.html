@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>repl.it</title>
+    <link href="style.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+    <script>
+      //these grade conversions are based on: https://en.wikipedia.org/wiki/Academic_grading_in_Canada
+      let grade=prompt("Enter an integer grade to be converted");
+      if (convert(grade)=="INVALID") {
+        document.write("Invalid value. Please try again.")
+      }
+      else document.write("You received a "+(convert(grade))+".<br>");
+
+      function convert(mark) {
+        if (grade<50) return "R";
+        else if (grade>=50&&grade<=53) return "D-"; //checks for D-
+        else if (grade>=54&&grade<=56) return "D"; //checks for D
+        else if (grade>=57&&grade<=59) return "D+"; //checks for D+
+        else if (grade>=60&grade<=63) return "C-"; //checks for C-
+        else if (grade>=64&&grade<=66) return "C"; //checks for C
+        else if (grade>=67&&grade<=69) return "C+"; //checks for C+
+        else if (grade>=70&&grade<=73) return "B-"; //checks for B-
+        else if (grade>=74&&grade<=76) return "B"; //checks for B
+        else if (grade>=77&&grade<=79) return "B+"; //checks for B+
+        else if (grade>=80&&grade<=85) return "A-"; //checks for A-
+        else if (grade>=86&&grade<=94) return "A"; //checks for A
+        else if (grade>=95&&grade<=100) return "A+"; //checks for A+
+        else return "INVALID"; //remaining value(s) must be invalid
+        //note: this can be done with a switch to decrease runtime (if else statements go in order (last statement takes longer to get to than the first), whereas switches don't (uses hash table which means that all statements have same access time)
+      }
+      
+    </script>
+  </body>
+</html>
