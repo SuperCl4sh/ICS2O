@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>repl.it</title>
+    <link href="style.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+    <script>
+      function area() {
+          return document.getElementById("areaDiv").innerHTML="The area is "+String(document.getElementById("length").value*document.getElementById("width").value); //calculating area
+          }
+    function perimeter() {
+      return document.getElementById("perimDiv").innerHTML="The perimeter is "+String(2*(document.getElementById("length").value+document.getElementById("width").value)); //calculating perimeter
+    }
+    </script>
+    <form>
+      <div style="font-size:30px;">Area and perimeter of a rectangle</div>
+        <br><br>
+      Length
+      <input type="text" id="length">
+      <br><br>Width
+      <input type="text" id="width">
+      <br><br>
+      <button type="button" onclick="area()">Area</button>
+      <button type="button" onclick="perimeter()">Perimeter</button>
+    </form>
+    <br>
+    <div
+    <div id="areaDiv"></div>
+    <div id="perimDiv"></div>
+    </div>
+  </body>
+</html>
