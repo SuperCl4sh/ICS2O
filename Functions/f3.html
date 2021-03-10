@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>repl.it</title>
+    <link href="style.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+    <script>
+      let finalNumberOfIter=parseInt(prompt("How many questions would you like to generate?")); //checking how many questions the user wants
+      for (let iterations=0;iterations<finalNumberOfIter;iterations++) {
+      let num1=Math.floor(Math.random()*10200)%999+1,num2=Math.floor(Math.random()*10200)%999+1,num3=Math.floor(Math.random()*10200)%999+1,operations=["+","-","/","%","*"]; //generates the required variables
+
+      document.write("Question "+String(iterations+1)+" is "+generate(num1,num2,num3,operations)+"<br><br>");//displays the generated equation
+      }
+
+      function generate(num1, num2, num3, operations) { //generates the equation
+        return "("+String(num1)+operations[Math.floor(Math.random()*34243)%operations.length]+String(num2)+")"+operations[Math.floor(Math.random()*324324)%operations.length]+String(num3);
+      }
+    </script>
+  </body>
+</html>
