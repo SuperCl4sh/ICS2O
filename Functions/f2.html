@@ -8,12 +8,12 @@
   </head>
   <body>
     <script>
-      var words=["A","this","sir","dad","mother","father","cousin","keyboard","box","mouse","laptop","key","headphones","television"];
+      var words=["A","this","sir","dad","mother","father","cousin","keyboard","box","mouse","laptop","key","headphones","television"]; //list of words 
 
         document.write("Your secret word is "+generate());
 
         function generate() {
-          return words[Math.floor(Math.random()*(words.length))%words.length];
+          return words[Math.floor(Math.random()*(words.length))%words.length]; //mode words.length ensures that there will never be an index out of bounds
         }
     </script>
   </body>
