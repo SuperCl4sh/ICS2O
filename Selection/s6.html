@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>repl.it</title>
+    <link href="style.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+    <script>
+          let num1=Math.floor(Math.random()*15)+1,num2=Math.floor(Math.random()*15)+1,counter=0,attempts=0,question=0; //initialize variables
+          while (true) {
+            ++attempts;
+          for (let i=0;i<3;i++) {
+            num1=Math.floor(Math.random()*14)+1,num2=Math.floor(Math.random()*14)+1;
+            let sign=generate();//generates an operation (addition or subtraction in this case)
+            ++question;
+            let equ=String(num1)+sign+String(num2);//creates equatino
+            
+            let user=prompt("The equation is: "+equ+". Enter your answer here"); //prompts the user for their answer to the displayed equation
+            document.write("Question "+String(question)+": "+equ+"<br>"); //writes question on page
+            document.write("Your answer was: "+String(user)+"<br>"); //writes user answer on page
+            let ans=0;
+            if (sign=='+') ans=num1+num2; //generates the correct answer
+            else ans=num1-num2; 
+            document.write("The correct answer is: "+String(ans)+"<br><br>"); //writes correct answer on document
+            if (ans==user) { //check if user got it right
+              alert("Congratulations! You got the answer correct.");
+              ++counter;
+            }
+            else { //if they didn't get it right, they must have got it wrong
+              alert("You got the wrong answer!");
+            }
+          }
+          alert("Your win percentage is: "+String((((counter/(attempts*3))*100.0).toFixed(2)))+ ". Your win to loss ratio is "+String(counter)+":"+String(attempts*3-counter)); //displays win perctage and win to loss ratio
+          if (!parseInt(prompt("Press 0 to leave and 1 to continue."))) break; //checks if user wants to quit or continue
+          }
+
+
+          function generate() {
+            let operations=["+","-"];
+            return operations[Math.floor(Math.random()*2)%2]; //mod n restricts the values to be between 0 and n-1, therefore mod 2 is best for this
+          }
+    </script>
+  </body>
+</html>
