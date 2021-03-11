@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>repl.it</title>
+    <style>
+      
+.formDiv {
+  text-align:center;
+  align-content:center;
+  font-family:'Times New Roman', Times, serif;
+  font-size:15px;
+}
+.buttonsInfo {
+  height:100%;
+  width:100%;
+  font-family:'Courier New', Courier, monospace;
+  font-size:20px;
+}
+.spaceDiv {
+  height:25px;
+  width:25px;
+}
+button {
+  color:white;
+  background-color:black;
+  font-family:Verdana, Geneva, Tahoma, sans-serif;
+  transition:0.5s;
+
+}
+button:hover {
+  color:black;
+  background-color:white;
+}
+
+    </style>
+  </head>
+  <body>
+    <script>
+      function doName() {
+        return document.getElementById("fullName").innerHTML="Your full name is "+document.getElementById("fname").value+" "+document.getElementById("mname").value+" "+document.getElementById("lname").value;
+      }
+      function doGender() {
+        return document.getElementById("Gender").innerHTML="Your gender is "+getGender();
+      }
+      function getGender() {
+        if (document.getElementById("male").checked) return "male";
+        else if (document.getElementById("female").checked) return "female";
+        else if (document.getElementById("Other").checked) return "other";
+        else return null;
+      }
+      function doGrade() {
+        return document.getElementById("printGrade").innerHTML="You are in grade "+document.getElementById("grade").value;
+      }
+      function doBirth() {
+        return document.getElementById("printBirth").innerHTML="Your date of birth is "+birth.value;
+      }
+      function calcAge() {
+        let inputDate=document.getElementById("birth").value,vals=[],curr="";//initializing variables
+        for (let i=0;i<inputDate.length;i++) { //iterating through the characters of the date inputted by the user to convert it into 3 variables: year, month, and day
+          if (inputDate[i]=='-') {
+            vals.push(parseInt(curr));
+            curr="";
+          }
+          else curr+=inputDate[i];
+        }
+        if (curr.length>0) vals.push(parseInt(curr));
+        let year=parseInt(vals[0]),month=parseInt(vals[1]),day=parseInt(vals[2]),today=new Date();
+        let currDay=parseInt(today.getDate()),currMonth=parseInt(today.getMonth()),currYear=today.getFullYear(),ans=0;
+        if (year==currYear&&currMonth==month&&currDay>=day) { //checking if birthday has passed
+              ans=currYear-year;
+        }
+        if (ans==0) { //if answer has not been 
+          ans=currYear-year-1;
+        }
+        return document.getElementById("finalDate").innerHTML="You are currently "+String(ans)+" years old";
+      }
+      function checkPalin() {
+        let current=document.getElementById("fname").value,isPalin=1;
+        //a palindrome is a string that is the same backwards, for example 'aba' is a palindrome, but 'abc' isn't
+        for (let i=0,j=current.length-1&&isPalin;j>i;i++,j--) { //two pointers, one at start and another at end
+          if (current[i]!=current[j]) isPalin=0; //if the two characters are not equal, they are not a palindrome
+        }
+        let change=(isPalin)?"":" not";
+        return document.getElementById("palin").innerHTML="Your first name is a "+change+" palindrome";
+      }
+    </script>
+    <div class="formDiv">
+    <form>
+      <div style="font-size:50px;padding:50px;">
+        Information Form
+      </div>
+      First Name
+      <input type="text" id="fname">
+      <div class="spaceDiv"></div>
+      Middle Name
+      <input type="text" id="mname">
+      <div class="spaceDiv"></div>
+      Last Name
+      <input type="text" id="lname">
+      <div class="spaceDiv"></div>
+      Nickname
+      <input type="text" id="nname">
+      <div class="spaceDiv"></div>
+      Gender
+      <div>
+        <input type="radio" id="male" name="gender">
+        <label for="gender">Male</label>
+        <input type="radio" id="female" name="gender">
+        <label for="gender">Female</label>
+        <input type="radio" id="Other" name="gender">
+        <label for="gender">Other</label>
+      </div>
+      <div class="spaceDiv"></div>
+      Grade
+      <input type="text" id="grade">
+      <div class="spaceDiv"></div>
+      Height
+      <input type="text" id="height">
+      <div class="spaceDiv"></div>
+      Weight
+      <input type="text" id="weight">
+      <div class="spaceDiv"></div>
+      Hair Colour
+      <input type="text" id="hair">
+      <div class="spaceDiv"></div>
+      Date of Birth
+      <input type="date" id="birth">
+      <div class="spaceDiv"></div>
+
+      </select>
+      <div style="height:50px;width:50px;"></div>
+      <div class="buttons">
+        <button type="button" onclick="doName()">Full name</button>
+        <button type="button" onclick="doGender()">Gender</button>
+        <button type="button" onclick="doGrade()">Grade</button>
+        <button type="button" onclick="doBirth()">Birth date</button>
+        <button type="button" onclick="calcAge()">Age</button>
+        <button type="button" onclick="checkPalin()">Palindrome</button>
+      </div>
+      <div style="align-content:center;align-text:center;">
+      <div style="height:100px;width:100px;"></div>
+      <div class="buttonsInfo">
+        <div>
+        <div id="fullName"></div>
+        <div id="Gender"></div>
+        <div id="printGrade"></div>
+        <div id="printBirth"></div>
+        <duv id="finalDate"></div>
+        <div id="palin"></div>
+        </div>
+      </div>
+      </div>
+
+    </form>
+    </div>
+  </body>
+</html>
