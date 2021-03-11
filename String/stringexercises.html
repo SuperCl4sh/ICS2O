@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>repl.it</title>
+    <link href="style.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+    <script>
+      //Exercise 1 (pplea)
+        function change() {
+          let curr=prompt("Enter a word to be converted");
+          curr.toLowerCase();
+          let ans,start=curr[0];
+          if (start=='a'||start=='e'||start=='i'||start=='o'||start=='u') {
+            ans=curr.substring(1,curr.length)+curr.charAt(curr[0]);
+          }
+          else ans=curr+"ly";
+          return document.getElementById("exerciseOne").innerHTML=curr+" would be converted into "+ans+"<br>";
+        }
+
+        //Exercise 2 
+
+        function wordSub() {
+          let haystack=prompt("Enter a word"),needle=prompt("Enter a substring for "+haystack);
+          let element=document.getElementById("exerciseTwo");
+          element.innerHTML=haystack+" has "+String(haystack.length)+" characters<br>";
+          element.innerHTML+="The first occurence of "+ needle+" in "+haystack+" is at index "+String(haystack.indexOf(needle))+"<br>";
+          element.innerHTML+="The last occurence of "+needle+ " in "+haystack+" is at index "+String(haystack.lastIndexOf(needle))+"<br>";
+          return;
+          //note that the running time of this is O(|n|*|m|) where |n| is the length of the needle and |m| is the length of the haystack
+          //this can be drastically improved by using algorithms, such as rolling hash or Knuth Morris Pratt (kmp), which both run in linear time
+        }
+
+        //Exercise 3
+
+        function wordChar() {
+          let curr=prompt("Enter a word"),userChar=prompt("Enter a character"),possibleChars="abcdefghijklmnopqrstuvwxyz"; //initialize variables
+          curr=curr.toLowerCase(),userChar=userChar.toLowerCase();//convert to lower case for it to be easier to work with
+          let ans=curr,ind=ans.indexOf(userChar);
+          ans=curr.substring(0,ind)+possibleChars[Math.floor(Math.random()*27)]+curr.substring(ind+1,curr.length); //generates new string
+          return document.getElementById("exerciseThree").innerHTML="Your entered word was "+curr+" and the new word is "+ans;
+        }
+
+        //Exercise 4
+
+        function sortWord() {
+          let w1=prompt("Enter a word"),w2=prompt("Enter another word"),w3=prompt("Enter your final word"), //initialize variables
+          dict={};  //create dictionary
+          let w1Lower=w1.toLowerCase(),w2Lower=w2.toLowerCase(),w3Lower=w3.toLowerCase();
+          dict[w1Lower]=w1; //map the lowercase entered string to the entered string
+          dict[w2Lower]=w2;
+          dict[w3Lower]=w3;
+          let words=[w1Lower,w2Lower,w3Lower];
+
+          words.sort(); //sorting words
+          document.getElementById("exerciseFour").innerHTML=" The sorted list of your entered words is ";
+          for (let i=0;i<words.length;i++) {
+            document.getElementById("exerciseFour").innerHTML+=dict[words[i]]+" ";//displaying words
+            
+          }
+        }
+    </script>
+    <button type="button" onClick="change()">Exercise 1 (pplea) </button>
+    <button type="button" onClick="wordSub()">Exercise 2 (substring)</button>
+    <button type="button" onClick="wordChar()">Exercise 3</button>
+    <button type="button" onClick="sortWord()">Exercise 4</button>
+    <div id="exerciseOne"></div>
+    <div id="exerciseTwo"></div>
+    <div id="exerciseThree"></div>
+    <div id="exerciseFour"></div>
+  </body>
+</html>
