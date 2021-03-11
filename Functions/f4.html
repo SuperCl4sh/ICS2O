@@ -12,7 +12,9 @@
           return document.getElementById("areaDiv").innerHTML="The area is "+String(document.getElementById("length").value*document.getElementById("width").value); //calculating area
           }
     function perimeter() {
-      return document.getElementById("perimDiv").innerHTML="The perimeter is "+String(2*(document.getElementById("length").value+document.getElementById("width").value)); //calculating perimeter
+      return document.getElementById("perimDiv").innerHTML="The perimeter is "+ String(2*(parseInt(document.getElementById("length").value)+parseInt(document.getElementById("width").value)));
+      
+      //calculating perimeter
     }
     </script>
     <form>
