@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>repl.it</title>
+    <style>
+      body {
+        font-family:'Times New Roman', Times, serif;
+        color:white;
+        background-color:black;
+      }
+
+      .buttons {
+        height:70%;
+        width:70%;
+        position: absolute;
+        right:-20%;
+      }
+
+
+    </style>
+  </head>
+  <body>
+    <script>
+              function generateChar() {
+          let chars="abcdefghijklmnopqrstuvwxyz";
+          return chars[Math.floor(Math.random()*26)]; //generates random character
+        }
+
+        function generatePassword() {
+          let pass="";
+          for (let i=0;i<10;i++) {
+            pass+=generateChar(); //generates random password
+          }
+          let guess=prompt("Enter your guess (all 10 characters are lowercase and from the English alphabet");
+          let attempts=0;
+          while (guess!=pass) { //while the user hasn't guessed the password, ask them to guess 
+            guess=prompt("Enter your guess and press 0 to quit");
+            if (parseInt(guess)==0) {
+              alert("The password was "+pass);
+              return;
+            }
+          ++attempts; //record number of attempts
+          }
+          alert("Congratulations! You got the password after "+String(attempts)+" attempts");
+          //note it is very unlikely that the user will guess this password due to there being a lot of possible passwords (with combinatorics, we can find this number as 26^10)
+        }
+        function valid(character) {
+          let alphabet="abcdefghijklmnopqrstuvwxyz"; //checks if the character is from the english alphabet
+          for (let i=0;i<alphabet.length;i++) {
+            if (character==alphabet[i]) return 1;
+          }
+          return 0;
+        }
+        function letters() {
+          let sentence=prompt("Enter a sentence"); //gets sentence from user
+          sentence=sentence.toLowerCase(); //converts to lowercase
+          let i=0,ans=0;
+          while (i<sentence.length) {
+            if (valid(sentence[i])) ++ans; //if character is from the english alphabet, add one to the answer
+            ++i;
+          }
+          alert("The number of letters in your sentence is "+String(ans));
+        }
+        function hackerSpeak() {
+          let sentence=prompt("Enter a sentence");
+          let words={
+            "i":"1",
+            "a":"4",
+            "b":"8",
+            "e":"3",
+            "o":"0",
+            "t":"7",
+            "s":"5",
+          } //some of the possible conversions
+          let i=0;
+          while (i<sentence.length) {
+            if (words[sentence[i].toLowerCase()]) sentence=sentence.replace(sentence[i],words[sentence[i].toLowerCase()]); //if the character is in the dictionary (can be converted), replace it with its numeric equivalent (for example, 'i' would be replaced with 1)
+
+            ++i;
+          }
+          alert("Your sentence converted to to hackerspeak is "+sentence);
+        }
+        function isVowel(currChar) { //checks if character is a vowel
+          let possib="AEIOUaeiou";
+          let i=0;
+          while (i<possib.length) {
+            if (possib[i]==currChar) return 1;
+
+            ++i;
+          }
+          return 0;
+        }
+        function pigLatin() {
+          let sentence=prompt("Enter a sentence"),curr="",words=[]; //initialize variables
+          let i=0,current;
+          while (i<sentence.length) {
+            current=sentence[i];
+            if (current==' ') { //all words in a proper sentence will be separated by a space
+              if (curr.length>=1) {
+                words.push(curr); //add words
+                curr="";
+              }
+            }
+            else if (valid(current.toLowerCase())) curr+=sentence[i]; //if it's a valid character, add it to the current word
+            ++i;
+          }
+          if (curr.length>0) words.push(curr); //add the current word to the words array
+          i=0;
+          while (i<words.length) {
+            let currentWord=words[i];
+            if (isVowel(currentWord[0])) words[i]+="ay"; //check if the leading character is a vowel
+            else words[i]=currentWord.substr(1,currentWord.length)+currentWord[0]+"ay"; 
+
+
+
+            ++i;
+          }
+          return alert("Your sentence converted to pig latin is "+words.join(" ")); //returns the sentence converted into pig latin
+        }
+    </script>
+    <div class="buttons">
+      <button type="button" onClick="generatePassword()">Password</button>
+      <button type="button" onClick="letters()">Letters</button>
+      <button type="button" onClick="hackerSpeak()">Hacker speak</button>
+      <button type="button" onClick="pigLatin()">Pig Latin</button>
+    </div>
+  </body>
+</html>
